@@ -15,6 +15,8 @@
 		E808FE0E22565F8500B80B68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E808FE0C22565F8500B80B68 /* LaunchScreen.storyboard */; };
 		E808FE1922565F8500B80B68 /* MovieSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808FE1822565F8500B80B68 /* MovieSearchTests.swift */; };
 		E808FE2422565F8500B80B68 /* MovieSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808FE2322565F8500B80B68 /* MovieSearchUITests.swift */; };
+		E808FE362256603800B80B68 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808FE352256603800B80B68 /* URLSessionProtocol.swift */; };
+		E808FE382256605800B80B68 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808FE372256605800B80B68 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		E808FE1F22565F8500B80B68 /* MovieSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E808FE2322565F8500B80B68 /* MovieSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchUITests.swift; sourceTree = "<group>"; };
 		E808FE2522565F8500B80B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E808FE352256603800B80B68 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
+		E808FE372256605800B80B68 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,10 @@
 		E808FDFF22565F8400B80B68 /* MovieSearch */ = {
 			isa = PBXGroup;
 			children = (
+				E808FE342256601F00B80B68 /* Controller */,
+				E808FE332256601A00B80B68 /* View */,
+				E808FE322256601500B80B68 /* Model */,
+				E808FE312256600F00B80B68 /* Networking */,
 				E808FE0022565F8400B80B68 /* AppDelegate.swift */,
 				E808FE0222565F8400B80B68 /* SearchViewController.swift */,
 				E808FE0422565F8400B80B68 /* Main.storyboard */,
@@ -126,6 +134,36 @@
 				E808FE2522565F8500B80B68 /* Info.plist */,
 			);
 			path = MovieSearchUITests;
+			sourceTree = "<group>";
+		};
+		E808FE312256600F00B80B68 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				E808FE352256603800B80B68 /* URLSessionProtocol.swift */,
+				E808FE372256605800B80B68 /* NetworkManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		E808FE322256601500B80B68 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E808FE332256601A00B80B68 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E808FE342256601F00B80B68 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +297,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E808FE362256603800B80B68 /* URLSessionProtocol.swift in Sources */,
 				E808FE0322565F8400B80B68 /* SearchViewController.swift in Sources */,
+				E808FE382256605800B80B68 /* NetworkManager.swift in Sources */,
 				E808FE0922565F8400B80B68 /* MovieSearch.xcdatamodeld in Sources */,
 				E808FE0122565F8400B80B68 /* AppDelegate.swift in Sources */,
 			);
