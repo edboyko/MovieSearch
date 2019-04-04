@@ -21,7 +21,7 @@ struct Movie: Decodable {
     let voteCount: Int
     let id: Int
     let video: Bool
-    let voteAverage: Int
+    let voteAverage: Float
     let title: String
     let popularity: Float
     let posterPath: String

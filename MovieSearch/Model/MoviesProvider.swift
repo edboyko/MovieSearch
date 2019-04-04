@@ -30,8 +30,7 @@ class MoviesProvider {
         urlComponents.queryItems = [
             URLQueryItem(name: "api_key", value: MoviesProvider.apiKey),
             URLQueryItem(name: "query", value: searchQuery),
-            URLQueryItem(name: "page", value: pageString),
-            URLQueryItem(name: "order", value: "desc")
+            URLQueryItem(name: "page", value: pageString)
         ]
         let finalUrl = urlComponents.url!
         

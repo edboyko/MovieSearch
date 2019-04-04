@@ -19,6 +19,7 @@
 		E808FE382256605800B80B68 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808FE372256605800B80B68 /* NetworkManager.swift */; };
 		E808FE3A2256609600B80B68 /* SearchResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808FE392256609600B80B68 /* SearchResponseModel.swift */; };
 		E808FE3C225661F900B80B68 /* MoviesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808FE3B225661F900B80B68 /* MoviesProvider.swift */; };
+		E808FE402256663900B80B68 /* TestData.json in Resources */ = {isa = PBXBuildFile; fileRef = E808FE3F2256663900B80B68 /* TestData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		E808FE372256605800B80B68 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E808FE392256609600B80B68 /* SearchResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseModel.swift; sourceTree = "<group>"; };
 		E808FE3B225661F900B80B68 /* MoviesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesProvider.swift; sourceTree = "<group>"; };
+		E808FE3F2256663900B80B68 /* TestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			children = (
 				E808FE1822565F8500B80B68 /* MovieSearchTests.swift */,
 				E808FE1A22565F8500B80B68 /* Info.plist */,
+				E808FE3F2256663900B80B68 /* TestData.json */,
 			);
 			path = MovieSearchTests;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E808FE402256663900B80B68 /* TestData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
