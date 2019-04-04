@@ -17,6 +17,8 @@
 		E808FE2422565F8500B80B68 /* MovieSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808FE2322565F8500B80B68 /* MovieSearchUITests.swift */; };
 		E808FE362256603800B80B68 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808FE352256603800B80B68 /* URLSessionProtocol.swift */; };
 		E808FE382256605800B80B68 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808FE372256605800B80B68 /* NetworkManager.swift */; };
+		E808FE3A2256609600B80B68 /* SearchResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808FE392256609600B80B68 /* SearchResponseModel.swift */; };
+		E808FE3C225661F900B80B68 /* MoviesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808FE3B225661F900B80B68 /* MoviesProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		E808FE2522565F8500B80B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E808FE352256603800B80B68 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		E808FE372256605800B80B68 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E808FE392256609600B80B68 /* SearchResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseModel.swift; sourceTree = "<group>"; };
+		E808FE3B225661F900B80B68 /* MoviesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +152,8 @@
 		E808FE322256601500B80B68 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E808FE392256609600B80B68 /* SearchResponseModel.swift */,
+				E808FE3B225661F900B80B68 /* MoviesProvider.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -297,6 +303,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E808FE3C225661F900B80B68 /* MoviesProvider.swift in Sources */,
+				E808FE3A2256609600B80B68 /* SearchResponseModel.swift in Sources */,
 				E808FE362256603800B80B68 /* URLSessionProtocol.swift in Sources */,
 				E808FE0322565F8400B80B68 /* SearchViewController.swift in Sources */,
 				E808FE382256605800B80B68 /* NetworkManager.swift in Sources */,
