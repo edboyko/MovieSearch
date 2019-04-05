@@ -34,25 +34,53 @@ class MoviesProvider {
         ]
         let finalUrl = urlComponents.url!
         
-        networkManager.loadData(url: finalUrl) { (data, error) in
-            if let error = error as NSError? {
+        getData(type: SearchResponseModel.self, url: finalUrl) { (responseModel, error) in
+            if let response = responseModel {
+                
+                let movies = response.results
+                self.hasMorePages = response.page < response.totalPages
+                
+                self.currentPage += 1
+                completion(movies, nil)
+            }
+            else {
                 completion(nil, error)
             }
-            else if let data = data {
+        }
+    }
+    
+    func getMovieDetails(movieID: Int, completion: @escaping (MovieDetails?, Error?) -> Void) {
+        let idString = NSNumber(value: movieID).stringValue
+        guard let url = URL(string: MoviesProvider.baseURL)?.appendingPathComponent("movie").appendingPathComponent(idString), var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
+            return
+        }
+        
+        urlComponents.queryItems = [
+            URLQueryItem(name: "api_key", value: MoviesProvider.apiKey)
+        ]
+        let finalUrl = urlComponents.url!
+        
+        getData(type: MovieDetails.self, url: finalUrl) { (movieDetails, error) in
+            
+            completion(movieDetails, error)
+        }
+    }
+    
+    private func getData<T: Decodable>(type: T.Type, url: URL, completion: @escaping (T?, Error?) -> Void) {
+        // Download data using URL provided
+        networkManager.loadData(url: url) { (data, error) in
+            
+            if let data = data {
+                // Decode data
                 let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
                 decoder.dateDecodingStrategy = .formatted(dateFormatter)
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
                 
                 do {
-                    let response = try decoder.decode(SearchResponseModel.self, from: data)
-                    let movies = response.results
-                    self.hasMorePages = response.page < response.totalPages
-                    
-                    self.currentPage += 1
-                    completion(movies, nil)
-                    
+                    let response = try decoder.decode(T.self, from: data)
+                    completion(response, nil)
                 }
                 catch {
                     completion(nil, error)

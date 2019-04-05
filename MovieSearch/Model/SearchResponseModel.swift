@@ -33,3 +33,31 @@ struct Movie: Decodable {
     let overview: String
     let releaseDate: Date
 }
+struct MovieDetails: Decodable {
+    struct Genre: Decodable {
+        let name: String
+    }
+    let adult: Bool
+    let backdropPath: String?
+    
+    let budget: Int
+    let genres: [Genre]
+    
+    let homepage: URL?
+    let id: Int
+    let imdbId: String
+    let originalLanguage: String
+    let originalTitle: String
+    let overview: String
+    let popularity: Float
+    let posterPath: String?
+    
+    let releaseDate: Date
+    let revenue: Int
+    
+    let status: String
+    let tagline: String
+    let title: String
+    let voteAverage: Float
+    let voteCount: Int
+}
