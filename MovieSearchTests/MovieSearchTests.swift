@@ -12,17 +12,21 @@ import XCTest
 class MovieSearchTests: XCTestCase {
 
     var moviesProvider: MoviesProvider!
+    let mockSession = MockURLSession()
     
     override func setUp() {
-        let networkManager = NetworkManager(urlSession: MockURLSession())
+        let networkManager = NetworkManager(urlSession: mockSession)
         moviesProvider = MoviesProvider(networkManager: networkManager)
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        mockSession.testData = nil
     }
 
     func testGetMovies() {
+        let url = Bundle(for: MovieSearchTests.self).url(forResource: "TestData", withExtension: "json")
+        mockSession.testData = try? Data(contentsOf: url!)
+        
         moviesProvider.getMovies(searchQuery: "test") { (movies, error) in
             if let movies = movies {
                 XCTAssert(movies.first?.title == "Batman")
@@ -31,12 +35,33 @@ class MovieSearchTests: XCTestCase {
                 XCTAssert(movies.last?.title == "The Batman vs. Dracula")
             }
             else {
+                print("error:", error?.localizedDescription ?? "Error")
                 XCTFail()
             }
         }
     }
+    
+    func testGetMovieDetails() {
+        let url = Bundle(for: MovieSearchTests.self).url(forResource: "MovieDetailsTestData", withExtension: "json")
+        mockSession.testData = try? Data(contentsOf: url!)
+        
+        moviesProvider.getMovieDetails(movieID: 0, completion: { (movieDetails, error) in
+            if let movieDetails = movieDetails {
+                XCTAssert(movieDetails.budget == 125000000)
+                XCTAssert(movieDetails.title == "Harry Potter and the Philosopher's Stone")
+                XCTAssert(movieDetails.id == 671)
+                XCTAssert(movieDetails.genres.first?.name == "Adventure")
+            }
+            else {
+                print("error:", error?.localizedDescription ?? "Error")
+                XCTFail()
+            }
+        })
+    }
 }
 class MockURLSession: URLSessionProtocol {
+    
+    var testData: Data?
     
     var nextDataTask = MockURLSessionDataTask()
     
@@ -52,9 +77,8 @@ class MockURLSession: URLSessionProtocol {
     func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTaskProtocol {
         lastURL = request.url
         
-        let url = Bundle(for: MovieSearchTests.self).url(forResource: "TestData", withExtension: "json")
-        let data = try? Data(contentsOf: url!)
-        completionHandler(data, successHttpURLResponse(request: request), nextError)
+        
+        completionHandler(testData, successHttpURLResponse(request: request), nextError)
         return nextDataTask
     }
     
