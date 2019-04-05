@@ -49,6 +49,15 @@ class StorageManager {
         }
     }
     
+    
+    func deleteFromFavourites(movie: MovieFavourite) {
+        mainContext.performAndWait { [weak self] in
+            
+            self?.mainContext.delete(movie)
+            self?.saveContext()
+        }
+    }
+    
     var mainContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }

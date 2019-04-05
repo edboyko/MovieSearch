@@ -202,7 +202,7 @@
                             <outlet property="delegate" destination="SoM-7x-P8H" id="Q7x-ie-80O"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="PqV-5c-r4p">
+                    <navigationItem key="navigationItem" title="Details" id="PqV-5c-r4p">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="MOK-oo-OvQ">
                             <connections>
                                 <action selector="addToFavouritesAction:" destination="SoM-7x-P8H" id="4hd-9S-VER"/>
