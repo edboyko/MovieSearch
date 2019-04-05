@@ -20,11 +20,11 @@ class SearchResultsViewController: UIViewController {
     
     // Navigation Support
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else {
+        guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let movieDetailsVC = segue.destination as? MovieDetailsViewController else {
             return
         }
         let selectedMovie = movies[indexPath.row]
-        segue.destination.title = selectedMovie.title
+        movieDetailsVC.movieID = selectedMovie.id
     }
 }
 extension SearchResultsViewController: UITableViewDataSource {
