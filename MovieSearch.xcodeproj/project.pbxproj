@@ -20,6 +20,8 @@
 		E808FE3A2256609600B80B68 /* SearchResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808FE392256609600B80B68 /* SearchResponseModel.swift */; };
 		E808FE3C225661F900B80B68 /* MoviesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808FE3B225661F900B80B68 /* MoviesProvider.swift */; };
 		E808FE402256663900B80B68 /* TestData.json in Resources */ = {isa = PBXBuildFile; fileRef = E808FE3F2256663900B80B68 /* TestData.json */; };
+		E808FE4222566B5C00B80B68 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808FE4122566B5C00B80B68 /* SearchResultsViewController.swift */; };
+		E8B8EB7D2257896500B766FD /* UIViewController+Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B8EB7C2257896500B766FD /* UIViewController+Alerts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		E808FE392256609600B80B68 /* SearchResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseModel.swift; sourceTree = "<group>"; };
 		E808FE3B225661F900B80B68 /* MoviesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesProvider.swift; sourceTree = "<group>"; };
 		E808FE3F2256663900B80B68 /* TestData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestData.json; sourceTree = "<group>"; };
+		E808FE4122566B5C00B80B68 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		E8B8EB7C2257896500B766FD /* UIViewController+Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alerts.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,7 +118,6 @@
 				E808FE322256601500B80B68 /* Model */,
 				E808FE312256600F00B80B68 /* Networking */,
 				E808FE0022565F8400B80B68 /* AppDelegate.swift */,
-				E808FE0222565F8400B80B68 /* SearchViewController.swift */,
 				E808FE0422565F8400B80B68 /* Main.storyboard */,
 				E808FE0A22565F8500B80B68 /* Assets.xcassets */,
 				E808FE0C22565F8500B80B68 /* LaunchScreen.storyboard */,
@@ -171,6 +174,9 @@
 		E808FE342256601F00B80B68 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E808FE0222565F8400B80B68 /* SearchViewController.swift */,
+				E808FE4122566B5C00B80B68 /* SearchResultsViewController.swift */,
+				E8B8EB7C2257896500B766FD /* UIViewController+Alerts.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -308,11 +314,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E808FE3C225661F900B80B68 /* MoviesProvider.swift in Sources */,
+				E808FE4222566B5C00B80B68 /* SearchResultsViewController.swift in Sources */,
 				E808FE3A2256609600B80B68 /* SearchResponseModel.swift in Sources */,
 				E808FE362256603800B80B68 /* URLSessionProtocol.swift in Sources */,
 				E808FE0322565F8400B80B68 /* SearchViewController.swift in Sources */,
 				E808FE382256605800B80B68 /* NetworkManager.swift in Sources */,
 				E808FE0922565F8400B80B68 /* MovieSearch.xcdatamodeld in Sources */,
+				E8B8EB7D2257896500B766FD /* UIViewController+Alerts.swift in Sources */,
 				E808FE0122565F8400B80B68 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,11 +24,11 @@ struct Movie: Decodable {
     let voteAverage: Float
     let title: String
     let popularity: Float
-    let posterPath: String
+    let posterPath: String?
     let originalLanguage: String
     let originalTitle: String
     let genreIds: [Int]
-    let backdropPath: String
+    let backdropPath: String?
     let adult: Bool
     let overview: String
     let releaseDate: Date
