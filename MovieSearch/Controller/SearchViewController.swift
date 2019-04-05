@@ -38,7 +38,6 @@ class SearchViewController: UIViewController {
                         
                         resultsVC.movies = movies
                         resultsVC.title = "Results for: \(searchQuery)"
-                        strongSelf.activityIndicator.stopAnimating()
                         strongSelf.present(navController, animated: true)
                     }
                     else {
@@ -46,6 +45,7 @@ class SearchViewController: UIViewController {
                         
                         strongSelf.present(alert, animated: true)
                     }
+                    strongSelf.activityIndicator.stopAnimating()
                 }
             }
         }

@@ -17,6 +17,15 @@ class SearchResultsViewController: UIViewController {
     @IBAction func closeAction(_ sender: Any) {
         self.navigationController?.dismiss(animated: true)
     }
+    
+    // Navigation Support
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) else {
+            return
+        }
+        let selectedMovie = movies[indexPath.row]
+        segue.destination.title = selectedMovie.title
+    }
 }
 extension SearchResultsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -24,7 +33,7 @@ extension SearchResultsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "SearchResultCell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath)
         cell.textLabel?.text = movies[indexPath.row].title
         return cell
     }
