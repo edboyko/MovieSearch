@@ -24,7 +24,8 @@ class MovieDetailsViewController: UITableViewController {
             guard let strongSelf = self else {
                 return
             }
-            if let movieDetails = movieDetails {
+            strongSelf.movieDetails = movieDetails
+            if let movieDetails = strongSelf.movieDetails {
                 DispatchQueue.main.async {
                     strongSelf.firstCell.textLabel?.text = movieDetails.title
                     strongSelf.firstCell.detailTextLabel?.text = movieDetails.genres.first?.name
@@ -35,6 +36,18 @@ class MovieDetailsViewController: UITableViewController {
             else {
                 let alert = strongSelf.createDefaultAlert(message: error?.localizedDescription ?? "Error Occurred")
                 strongSelf.navigationController?.present(alert, animated: true)
+            }
+        }
+    }
+    @IBAction func addToFavouritesAction(_ sender: Any) {
+        guard let movieDetails = movieDetails else {
+            return
+        }
+        StorageManager().save(id: movieDetails.id, title: movieDetails.title) { [weak self] (error) in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else { return }
+                let alert = strongSelf.createDefaultAlert(message: error?.localizedDescription ?? "Added to Favourites!")
+                self?.navigationController?.present(alert, animated: true)
             }
         }
     }

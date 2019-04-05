@@ -137,7 +137,7 @@
         <!--Details-->
         <scene sceneID="hil-Qs-MNg">
             <objects>
-                <tableViewController title="Details" id="SoM-7x-P8H" customClass="MovieDetailsViewController" customModule="MovieSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MovieDetailsViewController" title="Details" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SoM-7x-P8H" customClass="MovieDetailsViewController" customModule="MovieSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="oUE-8c-EKP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -202,6 +202,13 @@
                             <outlet property="delegate" destination="SoM-7x-P8H" id="Q7x-ie-80O"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="PqV-5c-r4p">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="MOK-oo-OvQ">
+                            <connections>
+                                <action selector="addToFavouritesAction:" destination="SoM-7x-P8H" id="4hd-9S-VER"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="firstCell" destination="ywy-Re-49D" id="y82-6s-eHu"/>
                         <outlet property="secondCell" destination="e52-Gv-x8t" id="5we-7g-Er6"/>
@@ -209,19 +216,60 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VFd-zg-8oz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4198.5507246376819" y="-21.428571428571427"/>
+            <point key="canvasLocation" x="4565" y="319"/>
         </scene>
-        <!--View Controller-->
+        <!--Favourites-->
         <scene sceneID="rxZ-IA-5Ue">
             <objects>
-                <viewController id="V2O-sP-Z5X" sceneMemberID="viewController">
+                <viewController id="V2O-sP-Z5X" customClass="FavouritesViewController" customModule="MovieSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DX9-AM-OfX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="210-aC-A2Z">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieFavouriteCell" textLabel="hfc-Ad-Nwk" style="IBUITableViewCellStyleDefault" id="CRI-AP-Oqy">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CRI-AP-Oqy" id="jl9-jw-DKf">
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hfc-Ad-Nwk">
+                                                    <rect key="frame" x="20" y="0.0" width="356" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="SoM-7x-P8H" kind="show" id="9zY-5T-l5E"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="V2O-sP-Z5X" id="dLt-Fz-7ho"/>
+                                    <outlet property="delegate" destination="V2O-sP-Z5X" id="k1P-2U-VHL"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vbt-kL-YQN" firstAttribute="trailing" secondItem="210-aC-A2Z" secondAttribute="trailing" id="6GF-KR-NFA"/>
+                            <constraint firstItem="210-aC-A2Z" firstAttribute="top" secondItem="vbt-kL-YQN" secondAttribute="top" id="JQA-an-mqR"/>
+                            <constraint firstItem="vbt-kL-YQN" firstAttribute="bottom" secondItem="210-aC-A2Z" secondAttribute="bottom" id="ppg-YJ-evY"/>
+                            <constraint firstItem="210-aC-A2Z" firstAttribute="leading" secondItem="vbt-kL-YQN" secondAttribute="leading" id="yOy-Z0-pOh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="vbt-kL-YQN"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Vdz-vl-S6F"/>
+                    <navigationItem key="navigationItem" title="Favourites" id="Vdz-vl-S6F"/>
+                    <connections>
+                        <outlet property="tableView" destination="210-aC-A2Z" id="aTg-6s-lxP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="idg-vH-ary" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -284,4 +332,7 @@
             <point key="canvasLocation" x="2389.8550724637685" y="-21.428571428571427"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="9zY-5T-l5E"/>
+    </inferredMetricsTieBreakers>
 </document>
