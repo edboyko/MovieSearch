@@ -28,6 +28,7 @@
 		E8B8EB852257B66400B766FD /* MovieBasicDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B8EB842257B66400B766FD /* MovieBasicDetailsCell.swift */; };
 		E8B8EB872257BCBF00B766FD /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B8EB862257BCBF00B766FD /* StorageManager.swift */; };
 		E8B8EB892257C2CD00B766FD /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B8EB882257C2CD00B766FD /* FavouritesViewController.swift */; };
+		E8B8EB8A2257D8EF00B766FD /* MovieSearch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E808FE0722565F8400B80B68 /* MovieSearch.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -353,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8B8EB8A2257D8EF00B766FD /* MovieSearch.xcdatamodeld in Sources */,
 				E808FE1922565F8500B80B68 /* MovieSearchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

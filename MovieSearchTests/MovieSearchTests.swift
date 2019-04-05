@@ -7,20 +7,49 @@
 //
 
 import XCTest
+import CoreData
 @testable import MovieSearch
 
 class MovieSearchTests: XCTestCase {
 
     var moviesProvider: MoviesProvider!
     let mockSession = MockURLSession()
+    var storageManager: StorageManager!
+    
+    lazy var managedObjectModel: NSManagedObjectModel = {
+        let managedObjectModel = NSManagedObjectModel.mergedModel(from: [Bundle(for: MovieSearchTests.self)] )!
+        return managedObjectModel
+    }()
+    
+    var mockPersistantContainer: NSPersistentContainer {
+        
+        let container = NSPersistentContainer(name: "UserList", managedObjectModel: managedObjectModel)
+        let description = NSPersistentStoreDescription()
+        description.type = NSInMemoryStoreType
+        description.shouldAddStoreAsynchronously = false
+        
+        container.persistentStoreDescriptions = [description]
+        container.loadPersistentStores { (description, error) in
+            // Check if the data store is in memory
+            precondition( description.type == NSInMemoryStoreType )
+            
+            // Check if creating container wrong
+            if let error = error {
+                fatalError("Create an in-mem coordinator failed \(error)")
+            }
+        }
+        return container
+    }
     
     override func setUp() {
         let networkManager = NetworkManager(urlSession: mockSession)
         moviesProvider = MoviesProvider(networkManager: networkManager)
+        storageManager = StorageManager(persistentContainer: mockPersistantContainer)
     }
 
     override func tearDown() {
         mockSession.testData = nil
+        
     }
 
     func testGetMovies() {
@@ -57,6 +86,56 @@ class MovieSearchTests: XCTestCase {
                 XCTFail()
             }
         })
+    }
+    
+    func testAddFavourite() {
+        let id = 1
+        let title = "Test Title"
+        let promise = expectation(description: "TestPassed")
+        storageManager.save(id: id, title: title) { (error) in
+            if let error = error {
+                print("Error:", error.localizedDescription ?? "Unknown Error")
+                XCTFail()
+            }
+            else {
+                let favourites = self.storageManager.getFavourites()
+                guard let movie = favourites?.first else {
+                    XCTFail()
+                    return
+                }
+                XCTAssertEqual(1, favourites?.count)
+                XCTAssertTrue(movie.id == id)
+                XCTAssertTrue(movie.title == title)
+                promise.fulfill()
+            }
+        }
+        wait(for: [promise], timeout: 2)
+    }
+    
+    func testDeleteFavourite() {
+        let id = 1
+        let title = "Test Title"
+        let promise = expectation(description: "TestPassed")
+        storageManager.save(id: id, title: title) { (error) in
+            if let error = error {
+                print("Error:", error.localizedDescription ?? "Unknown Error")
+                XCTFail()
+            }
+            else {
+                let favourites = self.storageManager.getFavourites()
+                guard let movie = favourites?.first else {
+                    XCTFail()
+                    return
+                }
+                XCTAssertEqual(1, favourites?.count)
+                XCTAssertTrue(movie.id == id)
+                XCTAssertTrue(movie.title == title)
+                self.storageManager.deleteFromFavourites(movie: movie)
+                XCTAssertEqual(0, self.storageManager.getFavourites()?.count)
+                promise.fulfill()
+            }
+        }
+        wait(for: [promise], timeout: 2)
     }
 }
 class MockURLSession: URLSessionProtocol {
