@@ -10,6 +10,7 @@ import UIKit
 
 class SearchResultsViewController: UIViewController {
 
+    var moviesProvider: MoviesProvider?
     var movies = [Movie]()
     
     @IBOutlet private var tableView: UITableView!
@@ -26,15 +27,47 @@ class SearchResultsViewController: UIViewController {
         let selectedMovie = movies[indexPath.row]
         movieDetailsVC.movieID = selectedMovie.id
     }
+    
+    func getMore() {
+        guard let moviesProvider = moviesProvider, let currentQuery = moviesProvider.currentQuery else {
+            return
+        }
+        if moviesProvider.hasMorePages {
+            moviesProvider.getMovies(searchQuery: currentQuery) { [weak self] (movies, error) in
+                DispatchQueue.main.async {
+                    
+                    if let movies = movies {
+                        self?.movies.append(contentsOf: movies)
+                        self?.tableView.reloadData()
+                    }
+                }
+            }
+        }
+    }
 }
-extension SearchResultsViewController: UITableViewDataSource {
+extension SearchResultsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell", for: indexPath)
-        cell.textLabel?.text = movies[indexPath.row].title
+        let movie =  movies[indexPath.row]
+        cell.textLabel?.text = movie.title
+        cell.detailTextLabel?.text = "Release Year: \(movie.releaseYear ?? "N/A") Rating: \(String(movie.voteAverage))"
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if moviesProvider?.hasMorePages ?? false {
+            return "Loading..."
+        }
+        else {
+            return nil
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+        getMore()
     }
 }

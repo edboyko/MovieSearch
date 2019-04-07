@@ -23,8 +23,9 @@ class SearchViewController: UIViewController {
     func search(from textField: UITextField) {
         self.view.endEditing(true)
         if let searchQuery = textField.text, !searchQuery.isEmpty {
+            let moviesProvider = MoviesProvider()
             activityIndicator.startAnimating()
-            MoviesProvider().getMovies(searchQuery: searchQuery) { (movies, error) in
+            moviesProvider.getMovies(searchQuery: searchQuery) { (movies, error) in
                 DispatchQueue.main.async { [weak self] in
                     guard let strongSelf = self else {
                         return
@@ -37,6 +38,7 @@ class SearchViewController: UIViewController {
                         else { return }
                         
                         resultsVC.movies = movies
+                        resultsVC.moviesProvider = moviesProvider
                         resultsVC.title = "Results for: \(searchQuery)"
                         strongSelf.present(navController, animated: true)
                     }

@@ -31,7 +31,20 @@ struct Movie: Decodable {
     let backdropPath: String?
     let adult: Bool
     let overview: String
-    let releaseDate: Date
+    let releaseDate: String
+    
+    var releaseDateParsed: Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.date(from: releaseDate)
+    }
+    
+    var releaseYear: String? {
+        guard let releaseDate = releaseDateParsed else { return nil }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy"
+        return formatter.string(from: releaseDate)
+    }
 }
 struct MovieDetails: Decodable {
     struct Genre: Decodable {
