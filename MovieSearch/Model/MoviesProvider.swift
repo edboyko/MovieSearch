@@ -18,34 +18,32 @@ class MoviesProvider {
     
     private(set) var currentQuery: String?
     
-    var searchURL: URL? {
-        guard let url = URL(string: MoviesProvider.baseURL)?.appendingPathComponent("search").appendingPathComponent("movie") else {
-            return nil
-        }
-        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true)
-        
-        let pageString = NSNumber(value: currentPage).stringValue
-        
-        urlComponents?.queryItems = [
-            URLQueryItem(name: "api_key", value: MoviesProvider.apiKey),
-            URLQueryItem(name: "query", value: currentQuery),
-            URLQueryItem(name: "page", value: pageString)
-        ]
-        return urlComponents?.url
-    }
-    
     init(networkManager: NetworkManager = NetworkManager()) {
         self.networkManager = networkManager
     }
     
-    func getMovies(searchQuery: String, completion: @escaping ([Movie]?, Error?) -> Void) {
+    func getMovies(searchQuery: String, completion: @escaping ([MovieSearchResult]?, Error?) -> Void) {
         
         currentQuery = searchQuery
-        guard let url = searchURL else {
+        guard let url = URL(string: MoviesProvider.baseURL)?.appendingPathComponent("search").appendingPathComponent("movie"), var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
             completion(nil, nil)
             return
         }
-        getData(type: SearchResponseModel.self, url: url) { (responseModel, error) in
+        
+        let pageString = NSNumber(value: currentPage).stringValue
+        
+        urlComponents.queryItems = [
+            URLQueryItem(name: "api_key", value: MoviesProvider.apiKey),
+            URLQueryItem(name: "query", value: currentQuery),
+            URLQueryItem(name: "page", value: pageString)
+        ]
+        
+        guard let finalURL = urlComponents.url else {
+            completion(nil, nil)
+            return
+        }
+        
+        getData(type: SearchResponseModel.self, url: finalURL) { (responseModel, error) in
             if let response = responseModel {
                 
                 let movies = response.results

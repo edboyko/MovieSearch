@@ -11,7 +11,7 @@ import UIKit
 class SearchResultsViewController: UIViewController {
 
     var moviesProvider: MoviesProvider?
-    var movies = [Movie]()
+    var movies = [MovieSearchResult]()
     
     @IBOutlet private var tableView: UITableView!
     

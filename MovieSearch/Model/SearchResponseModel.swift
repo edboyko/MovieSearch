@@ -13,10 +13,10 @@ struct SearchResponseModel: Decodable {
     let page: Int
     let totalResults: Int
     let totalPages: Int
-    let results: [Movie]
+    let results: [MovieSearchResult]
 }
 
-struct Movie: Decodable {
+struct MovieSearchResult: Movie, Decodable {
 
     let voteCount: Int
     let id: Int
@@ -32,21 +32,9 @@ struct Movie: Decodable {
     let adult: Bool
     let overview: String
     let releaseDate: String
-    
-    var releaseDateParsed: Date? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter.date(from: releaseDate)
-    }
-    
-    var releaseYear: String? {
-        guard let releaseDate = releaseDateParsed else { return nil }
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy"
-        return formatter.string(from: releaseDate)
-    }
 }
-struct MovieDetails: Decodable {
+struct MovieDetails: Movie, Decodable {
+    
     struct Genre: Decodable {
         let name: String
     }
@@ -65,7 +53,6 @@ struct MovieDetails: Decodable {
     let popularity: Float
     let posterPath: String?
     
-    let releaseDate: Date
     let revenue: Int
     
     let status: String
@@ -73,4 +60,34 @@ struct MovieDetails: Decodable {
     let title: String
     let voteAverage: Float
     let voteCount: Int
+    let releaseDate: String
+}
+protocol Movie {
+    
+    var voteCount: Int { get }
+    var id: Int { get }
+    var voteAverage: Float { get }
+    var title: String { get }
+    var popularity: Float { get }
+    var posterPath: String? { get }
+    var originalLanguage: String { get }
+    var originalTitle: String { get }
+    var backdropPath: String? { get }
+    var adult: Bool { get }
+    var overview: String { get }
+    var releaseDate: String { get }
+}
+extension Movie {
+    var releaseDateParsed: Date? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.date(from: releaseDate)
+    }
+    
+    var releaseYear: String? {
+        guard let releaseDate = releaseDateParsed else { return nil }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy"
+        return formatter.string(from: releaseDate)
+    }
 }

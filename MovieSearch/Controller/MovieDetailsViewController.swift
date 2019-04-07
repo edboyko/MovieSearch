@@ -9,17 +9,24 @@
 import UIKit
 
 class MovieDetailsViewController: UITableViewController {
-    @IBOutlet var firstCell: UITableViewCell!
-    @IBOutlet var secondCell: DescriptionCell!
+    @IBOutlet private var titleCell: UITableViewCell!
+    @IBOutlet private var overviewCell: DescriptionCell!
+    @IBOutlet private var posterImageView: UIImageView!
+    @IBOutlet var genresCell: UITableViewCell!
+    @IBOutlet var posterNotAvailableLabel: UILabel!
+    @IBOutlet var yearAndRatingCell: UITableViewCell!
     
     var movieDetails: MovieDetails?
     var movieID: Int?
+    
+    let imageProvider = ImageProvider()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         guard let movieID = movieID else {
             return
         }
+        
         MoviesProvider().getMovieDetails(movieID: movieID) { [weak self] (movieDetails, error) in
             guard let strongSelf = self else {
                 return
@@ -27,11 +34,27 @@ class MovieDetailsViewController: UITableViewController {
             strongSelf.movieDetails = movieDetails
             if let movieDetails = strongSelf.movieDetails {
                 DispatchQueue.main.async {
-                    strongSelf.firstCell.textLabel?.text = movieDetails.title
-                    strongSelf.firstCell.detailTextLabel?.text = movieDetails.genres.first?.name
-                    strongSelf.secondCell.textView?.text = movieDetails.overview
+                    strongSelf.titleCell.textLabel?.text = movieDetails.title
+                    strongSelf.yearAndRatingCell.textLabel?.text = movieDetails.releaseYear
+                    strongSelf.yearAndRatingCell.detailTextLabel?.text = "Rating: \(String(movieDetails.voteAverage))"
+                    strongSelf.overviewCell.textView?.text = movieDetails.overview
+                    let genres = movieDetails.genres.map { return $0.name }.joined(separator: ", ")
+                    strongSelf.genresCell.textLabel?.text = "Genres: \(genres)"
                     strongSelf.tableView.reloadData()
+                    
                 }
+                
+                strongSelf.imageProvider.getImage(for: movieDetails, completion: { (image) in
+                    DispatchQueue.main.async {
+                        if let image = image {
+                            strongSelf.posterImageView.image = image
+                            strongSelf.tableView.reloadData()
+                        }
+                        else {
+                            strongSelf.posterNotAvailableLabel.isHidden = false
+                        }
+                    }
+                })
             }
             else {
                 let alert = strongSelf.createDefaultAlert(message: error?.localizedDescription ?? "Error Occurred")
@@ -39,6 +62,12 @@ class MovieDetailsViewController: UITableViewController {
             }
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        imageProvider.stopImageDownload()
+    }
+    
     @IBAction func addToFavouritesAction(_ sender: Any) {
         guard let movieDetails = movieDetails else {
             return

@@ -1,398 +1,66 @@
 {
-    "page": 3,
-    "total_results": 109,
-    "total_pages": 6,
-    "results": [
+    "adult": false,
+    "backdrop_path": "/pZIiPOoNhhzVpBuVEpDK7vbBz4l.jpg",
+    "belongs_to_collection": {
+        "id": 1241,
+        "name": "Harry Potter Collection",
+        "poster_path": "/eVPs2Y0LyvTLZn6AP5Z6O2rtiGB.jpg",
+        "backdrop_path": "/wfnMt6LGqYHcNyOfsuusw5lX3bL.jpg"
+    },
+    "budget": 125000000,
+    "genres": [
         {
-            "vote_count": 7,
-            "id": 204649,
-            "video": false,
-            "vote_average": 6.9,
-            "title": "Batman: Beyond Batman",
-            "popularity": 1.4,
-            "poster_path": "/zMY2QVCN9z6YH0eS32NOrSss0gb.jpg",
-            "original_language": "en",
-            "original_title": "Batman: Beyond Batman",
-            "genre_ids": [],
-            "backdrop_path": null,
-            "adult": false,
-            "overview": "Behind the scenes documentary highlighting production design, props &amp; gadgets, batmobile/batsuit design, and the music of the 1989 Batman.",
-            "release_date": "2005-07-04"
+            "id": 12,
+            "name": "Adventure"
         },
         {
-            "vote_count": 75,
-            "id": 411736,
-            "video": false,
-            "vote_average": 6.9,
-            "title": "Batman: Return of the Caped Crusaders",
-            "popularity": 5.142,
-            "poster_path": "/GW3IyMW5Xgl0cgCN8wu96IlNpD.jpg",
-            "original_language": "en",
-            "original_title": "Batman: Return of the Caped Crusaders",
-            "genre_ids": [
-                28,
-                16,
-                12,
-                80,
-                878
-            ],
-            "backdrop_path": "/4HriXH0XmceHwW6FVFcl3KPUaVY.jpg",
-            "adult": false,
-            "overview": "Adam West and Burt Ward returns to their iconic roles of Batman and Robin. Featuring the voices of Adam West, Burt Ward, and Julie Newmar, the film sees the superheroes going up against classic villains like The Joker, The Riddler, The Penguin and Catwoman, both in Gotham City… and in space.",
-            "release_date": "2016-10-08"
+            "id": 14,
+            "name": "Fantasy"
         },
         {
-            "vote_count": 28,
-            "id": 411802,
-            "video": false,
-            "vote_average": 5.6,
-            "title": "Batman Unlimited: Mechs vs. Mutants",
-            "popularity": 3.243,
-            "poster_path": "/bppmdOACqo9svFfZnITZAk3nAT3.jpg",
-            "original_language": "en",
-            "original_title": "Batman Unlimited: Mechs vs. Mutants",
-            "genre_ids": [
-                16
-            ],
-            "backdrop_path": "/kXExQoACzWwvxnOvKAJnCFFYbhM.jpg",
-            "adult": false,
-            "overview": "Mr. Freeze turns Killer Croc and Bane into super-sized monsters, and they bash their way through downtown Gotham until the Caped Crusader and his team of heroes join the fight in their giant robot mechs.",
-            "release_date": "2016-08-30"
-        },
-        {
-            "vote_count": 21,
-            "id": 287757,
-            "video": false,
-            "vote_average": 6.4,
-            "title": "Scooby-Doo Meets Batman",
-            "popularity": 2.788,
-            "poster_path": "/uI9enNoQsqseLXQK60YbscDr5L6.jpg",
-            "original_language": "en",
-            "original_title": "The New Scooby-Doo Movies: The Dynamic Scooby-Doo Affair / The Caped Crusader Caper (Scooby-Doo meets Batman)",
-            "genre_ids": [
-                10751,
-                16
-            ],
-            "backdrop_path": null,
-            "adult": false,
-            "overview": "Scooby-Doo Meets Batman is a video compilation from Warner Bros. Home Entertainment. It consists of two episodes from Hanna-Barbera's The New Scooby-Doo Movies, \"The Dynamic Scooby Doo Affair\" and \"The Caped Crusader Caper\", where Scooby-Doo and the gang team up with Batman and Robin to capture Joker and the Penguin.",
-            "release_date": "2002-08-20"
-        },
-        {
-            "vote_count": 12,
-            "id": 93560,
-            "video": false,
-            "vote_average": 5,
-            "title": "Batman and Robin",
-            "popularity": 1.572,
-            "poster_path": "/mhlVDSkxiyVqHBK8bqwfgK2v3e.jpg",
-            "original_language": "en",
-            "original_title": "Batman and Robin",
-            "genre_ids": [
-                28,
-                878,
-                53
-            ],
-            "backdrop_path": "/nLMZroK58XwdMei2hws4W9HEsML.jpg",
-            "adult": false,
-            "overview": "This 15-chapter serial pits Batman and Robin against The Wizard, who uses a device that allows him to control machinery to hold the city hostage.",
-            "release_date": "1949-05-26"
-        },
-        {
-            "vote_count": 1,
-            "id": 344081,
-            "video": false,
-            "vote_average": 5,
-            "title": "Batman Dracula",
-            "popularity": 1.371,
-            "poster_path": "/tOWKUBiqKShhRQ36VMtPq1UVh5x.jpg",
-            "original_language": "en",
-            "original_title": "Batman Dracula",
-            "genre_ids": [
-                53,
-                18
-            ],
-            "backdrop_path": null,
-            "adult": false,
-            "overview": "Batman Dracula is a 1964 black and white American film produced and directed by Andy Warhol, without the permission of DC Comics. The film was screened only at Warhol's art exhibits. A fan of the Batman series, Warhol made the movie as a homage. Batman Dracula is considered to be the first film featuring a blatantly campy Batman. The film was thought to have been lost until scenes from it were shown at some length in the documentary Jack Smith and the Destruction of Atlantis (2006). Jack Smith appeared as \"Batman\". (Wikipedia)",
-            "release_date": "1964-01-01"
-        },
-        {
-            "vote_count": 28,
-            "id": 29751,
-            "video": false,
-            "vote_average": 7.6,
-            "title": "Batman Unmasked: The Psychology of the Dark Knight",
-            "popularity": 2.319,
-            "poster_path": "/jjHu128XLARc2k4cJrblAvZe0HE.jpg",
-            "original_language": "en",
-            "original_title": "Batman Unmasked: The Psychology of the Dark Knight",
-            "genre_ids": [
-                99
-            ],
-            "backdrop_path": "/1oQLZa2FaTc7yXWku801S1LTOqO.jpg",
-            "adult": false,
-            "overview": "Delve into the world of Batman and the vigilante justice that he brought to the city of Gotham. Batman is a man who, after experiencing great tragedy, devotes his life to an ideal--but what happens when one man takes on the evil underworld alone? Examine why Batman is who he is--and explore how a boy scarred by tragedy becomes a symbol of hope to everyone else.",
-            "release_date": "2008-07-15"
-        },
-        {
-            "vote_count": 0,
-            "id": 581997,
-            "video": false,
-            "vote_average": 0,
-            "title": "Batman vs. Teenage Mutant Ninja Turtles",
-            "popularity": 4.511,
-            "poster_path": "/6MWGlVTeRyAyGp4whodsX0KBi2d.jpg",
-            "original_language": "en",
-            "original_title": "Batman vs. Teenage Mutant Ninja Turtles",
-            "genre_ids": [
-                28,
-                16,
-                10751
-            ],
-            "backdrop_path": "/22CWoofNEnylqQKneHiGDwxaSfD.jpg",
-            "adult": false,
-            "overview": "Batman, Batgirl and Robin forge an alliance with the Teenage Mutant Ninja Turtles to fight against the Turtles' sworn enemy, The Shredder, who has apparently teamed up with Ra's Al Ghul and The League of Assassins.",
-            "release_date": "2019-03-31"
-        },
-        {
-            "vote_count": 39,
-            "id": 300424,
-            "video": false,
-            "vote_average": 6.1,
-            "title": "LEGO DC Comics Super Heroes: Batman: Be-Leaguered",
-            "popularity": 5.014,
-            "poster_path": "/qD3xyKbCsaaYYDhksWFxxsE1DWq.jpg",
-            "original_language": "en",
-            "original_title": "LEGO DC Comics Super Heroes: Batman: Be-Leaguered",
-            "genre_ids": [
-                28,
-                12,
-                16,
-                10751
-            ],
-            "backdrop_path": "/6qXvtiL5zIJVswEQxW3hEkWLxzI.jpg",
-            "adult": false,
-            "overview": "Superman wants Batman to join his new superhero team, but Batman prides himself on being a self-sufficient loner.",
-            "release_date": "2014-10-27"
-        },
-        {
-            "vote_count": 22,
-            "id": 269246,
-            "video": false,
-            "vote_average": 7.5,
-            "title": "Batman Beyond",
-            "popularity": 1.149,
-            "poster_path": "/htStH5hUh823rKRaFfccGxpD4N.jpg",
-            "original_language": "en",
-            "original_title": "Batman Beyond",
-            "genre_ids": [
-                28,
-                16,
-                878,
-                10770
-            ],
-            "backdrop_path": "/ssUR1IOGVP4Mdu7lzcSiyCJNa5b.jpg",
-            "adult": false,
-            "overview": "Terry faces off against a much younger Batman.",
-            "release_date": "2014-04-19"
-        },
-        {
-            "vote_count": 2,
-            "id": 131185,
-            "video": false,
-            "vote_average": 4,
-            "title": "Alias: Batman and Robin",
-            "popularity": 1.646,
-            "poster_path": "/mgsCUdWDsIuMkQ2ftIubPA47tKz.jpg",
-            "original_language": "en",
-            "original_title": "Alyas Batman En Robin",
-            "genre_ids": [
-                35,
-                28
-            ],
-            "backdrop_path": "/rgdvBwhl2YLsQiOqJVg0iMdS5W3.jpg",
-            "adult": false,
-            "overview": "Alyas Batman en Robin is a 1991 Filipino Batman comedy film produced by Viva Films spoofing the 1960s Batman television series. It later become popular on the Australian market and became used as a training film for The Birds are Coming Enterprises.  The movie was initially an unauthorized production, set to capitalize on the then in-production 1989 Batman film starring Michael Keaton. Warner Brothers threatened legal action and the release of the film was delayed until legal entanglements could be sorted out. The film was released in 1991, two years later than the intended 1989 release.",
-            "release_date": "1991-04-06"
-        },
-        {
-            "vote_count": 18351,
-            "id": 155,
-            "video": false,
-            "vote_average": 8.4,
-            "title": "The Dark Knight",
-            "popularity": 29.515,
-            "poster_path": "/1hRoyzDtpgMU7Dz4JF22RANzQO7.jpg",
-            "original_language": "en",
-            "original_title": "The Dark Knight",
-            "genre_ids": [
-                18,
-                28,
-                80,
-                53
-            ],
-            "backdrop_path": "/hqkIcbrOHL86UncnHIsHVcVmzue.jpg",
-            "adult": false,
-            "overview": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
-            "release_date": "2008-07-16"
-        },
-        {
-            "vote_count": 26,
-            "id": 472027,
-            "video": false,
-            "vote_average": 8.4,
-            "title": "Batman: The Dark Knight Returns (Deluxe Edition)",
-            "popularity": 2.615,
-            "poster_path": "/5wtf0fmaq4eBXVlQb4FaVMqf5Yb.jpg",
-            "original_language": "en",
-            "original_title": "Batman: The Dark Knight Returns (Deluxe Edition)",
-            "genre_ids": [
-                16,
-                28
-            ],
-            "backdrop_path": "/bUQGT4xJib43OrnpmNzgrGaLWJM.jpg",
-            "adult": false,
-            "overview": "Batman has not been seen for ten years. A new breed of criminal ravages Gotham City, forcing fifty-five-year-old Bruce Wayne back into the cape and cowl, but does he still have what it takes to fight crime in a new era?",
-            "release_date": "2013-10-08"
-        },
-        {
-            "vote_count": 20,
-            "id": 20776,
-            "video": false,
-            "vote_average": 6,
-            "title": "Return to the Batcave: The Misadventures of Adam and Burt",
-            "popularity": 2.146,
-            "poster_path": "/9jWkvwp9DNpUGAi57MiRwp3iYLJ.jpg",
-            "original_language": "en",
-            "original_title": "Return to the Batcave: The Misadventures of Adam and Burt",
-            "genre_ids": [
-                35,
-                28,
-                99
-            ],
-            "backdrop_path": "/ncHjygKDhr6nAhnEQDkeH01hrp6.jpg",
-            "adult": false,
-            "overview": "Adam West and Burt Ward are taken on a crazy adventure when the Batmobile is stolen from a car museum and they must track down the thief and return it. After solving a puzzle, they realize that the clues to finding the fiend who stole the Batmobile are hidden in their past. During the search, they flashback to their three seasons in tights, including their many sexual escapades.",
-            "release_date": "2003-03-09"
-        },
-        {
-            "vote_count": 1,
-            "id": 392475,
-            "video": false,
-            "vote_average": 6,
-            "title": "Batman: Evolution",
-            "popularity": 0.878,
-            "poster_path": "/3rs3Z4Oxameh51IxZyg7BwUYr7l.jpg",
-            "original_language": "en",
-            "original_title": "Batman: Evolution",
-            "genre_ids": [
-                80
-            ],
-            "backdrop_path": null,
-            "adult": false,
-            "overview": "Witness how the 60's Batman became the Dark Knight.",
-            "release_date": "2014-02-07"
-        },
-        {
-            "vote_count": 6,
-            "id": 186579,
-            "video": false,
-            "vote_average": 7.8,
-            "title": "Batman Tech",
-            "popularity": 0.809,
-            "poster_path": "/zbr3DvPXFJkLnxZMGGwXaRVAOxQ.jpg",
-            "original_language": "en",
-            "original_title": "Batman Tech",
-            "genre_ids": [
-                99
-            ],
-            "backdrop_path": "/tVLnQf6AvWKz8yRpoOnfTu0kht4.jpg",
-            "adult": false,
-            "overview": "He's caped, cowled and the coolest superhero of them all, because underneath that Batsuit, Batman only has his human strength and intellect to rely on. That and the greatest arsenal of crime fighting weaponry ever devised. But just where does comic book science fiction end and scientific fact begin? What technologies are behind the gadgets in Batman's utility belt? And just how plausible is the Batmobile? Get ready for a real life trip to the Batcave as we reveal the secrets behind Batman Tech.",
-            "release_date": "2008-07-20"
-        },
-        {
-            "vote_count": 0,
-            "id": 451570,
-            "video": false,
-            "vote_average": 0,
-            "title": "Batman Jr.",
-            "popularity": 0.6,
-            "poster_path": null,
-            "original_language": "en",
-            "original_title": "Batman Jr.",
-            "genre_ids": [
-                28,
-                18,
-                53
-            ],
-            "backdrop_path": null,
-            "adult": false,
-            "overview": "After Batman is murdered by the Jokers son Michael, Batmans son Jeffery  decides to finish his fathers job in this fan made fail.",
-            "release_date": ""
-        },
-        {
-            "vote_count": 126,
-            "id": 177271,
-            "video": false,
-            "vote_average": 6.5,
-            "title": "Lego Batman: The Movie - DC Super Heroes Unite",
-            "popularity": 1.767,
-            "poster_path": "/zpK8M3V6dAqPFLsMTrhvqcylmuw.jpg",
-            "original_language": "en",
-            "original_title": "Lego Batman: The Movie - DC Super Heroes Unite",
-            "genre_ids": [
-                16,
-                12,
-                10751
-            ],
-            "backdrop_path": "/gjUD9xzxycSCefFLCRHkTVPBjq7.jpg",
-            "adult": false,
-            "overview": "Joker teams up with Lex Luthor to destroy the world one brick at a time. It's up to Batman, Superman and the rest of the Justice League to stop them.",
-            "release_date": "2013-05-20"
-        },
-        {
-            "vote_count": 3,
-            "id": 138757,
-            "video": false,
-            "vote_average": 5,
-            "title": "James Batman",
-            "popularity": 0.6,
-            "poster_path": "/sWa1Y5QhGuJMjw8uuFoggGLqZ0y.jpg",
-            "original_language": "en",
-            "original_title": "James Batman",
-            "genre_ids": [
-                28,
-                12,
-                35,
-                878
-            ],
-            "backdrop_path": "/xSC5TtaGgL3dggKPfZKuWPUg3V4.jpg",
-            "adult": false,
-            "overview": "An evil syndicate is set to conquer the world, and the mission is to stop them from fulfilling their viscious plans. The consequences of their failure may mean the destruction of all dissenting countries who stand in their way. All countries must bow to their power before the deadline of five days expires. The solution is sending in their best operatives; James Hika, and the dynamic duo of Batman and Robin. They are first detested with working with each other, but for the safety of the world, they join forces. Through thick and thin, they survive the syndicate's plan to dispose of them. They get closer to stopping the syndicate plan, but there is a traitor in their midst. Will this deter them from achieving their goal?",
-            "release_date": "1966-10-26"
-        },
-        {
-            "vote_count": 13553,
-            "id": 49026,
-            "video": false,
-            "vote_average": 7.7,
-            "title": "The Dark Knight Rises",
-            "popularity": 24.729,
-            "poster_path": "/dEYnvnUfXrqvqeRSqvIEtmzhoA8.jpg",
-            "original_language": "en",
-            "original_title": "The Dark Knight Rises",
-            "genre_ids": [
-                28,
-                80,
-                18,
-                53
-            ],
-            "backdrop_path": "/f6ljQGv7WnJuwBPty017oPWfqjx.jpg",
-            "adult": false,
-            "overview": "Following the death of District Attorney Harvey Dent, Batman assumes responsibility for Dent's crimes to protect the late attorney's reputation and is subsequently hunted by the Gotham City Police Department. Eight years later, Batman encounters the mysterious Selina Kyle and the villainous Bane, a new terrorist leader who overwhelms Gotham's finest. The Dark Knight resurfaces to protect a city that has branded him an enemy.",
-            "release_date": "2012-07-16"
+            "id": 10751,
+            "name": "Family"
         }
-    ]
+    ],
+    "homepage": "http://harrypotter.warnerbros.com/harrypotterandthedeathlyhallows/mainsite/index.html",
+    "id": 671,
+    "imdb_id": "tt0241527",
+    "original_language": "en",
+    "original_title": "Harry Potter and the Philosopher's Stone",
+    "overview": "Harry Potter has lived under the stairs at his aunt and uncle's house his whole life. But on his 11th birthday, he learns he's a powerful wizard -- with a place waiting for him at the Hogwarts School of Witchcraft and Wizardry. As he learns to harness his newfound powers with the help of the school's kindly headmaster, Harry uncovers the truth about his parents' deaths -- and about the villain who's to blame.",
+    "popularity": 50.973,
+    "poster_path": "/dCtFvscYcXQKTNvyyaQr2g2UacJ.jpg",
+    "production_companies": [
+        {
+            "id": 174,
+            "logo_path": "/ky0xOc5OrhzkZ1N6KyUxacfQsCk.png",
+            "name": "Warner Bros. Pictures",
+            "origin_country": "US"
+        }
+    ],
+    "production_countries": [
+        {
+            "iso_3166_1": "GB",
+            "name": "United Kingdom"
+        },
+        {
+            "iso_3166_1": "US",
+            "name": "United States of America"
+        }
+    ],
+    "release_date": "2001-11-16",
+    "revenue": 976475550,
+    "runtime": 152,
+    "spoken_languages": [
+        {
+            "iso_639_1": "en",
+            "name": "English"
+        }
+    ],
+    "status": "Released",
+    "tagline": "Let the Magic Begin.",
+    "title": "Harry Potter and the Philosopher's Stone",
+    "video": false,
+    "vote_average": 7.8,
+    "vote_count": 13361
 }
