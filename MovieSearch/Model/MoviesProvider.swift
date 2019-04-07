@@ -7,7 +7,9 @@
 //
 
 import Foundation
-
+enum MoviesProviderError: Error {
+    case NoCurrentQuery
+}
 class MoviesProvider {
     
     // Properties
@@ -27,6 +29,7 @@ class MoviesProvider {
     func getMovies(searchQuery: String, completion: @escaping ([MovieSearchResult]?, Error?) -> Void) {
         currentQuery = searchQuery // Save query for getting next page later
         
+        // Create URL
         guard let url = URL(string: MoviesProvider.baseURL)?.appendingPathComponent("search").appendingPathComponent("movie"), var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
             completion(nil, nil)
             return
@@ -34,6 +37,7 @@ class MoviesProvider {
         
         let pageString = NSNumber(value: currentPage).stringValue
         
+        // Attach query to URL
         urlComponents.queryItems = [
             URLQueryItem(name: "api_key", value: MoviesProvider.apiKey),
             URLQueryItem(name: "query", value: currentQuery),
@@ -45,13 +49,13 @@ class MoviesProvider {
             return
         }
         
-        getData(type: SearchResponseModel.self, url: finalURL) { (responseModel, error) in
+        getData(type: SearchResponseModel.self, url: finalURL) { [weak self] (responseModel, error) in
             if let response = responseModel {
                 
                 let movies = response.results
-                self.hasMorePages = response.page < response.totalPages
+                self?.hasMorePages = response.page < response.totalPages
                 
-                self.currentPage += 1
+                if self?.hasMorePages ?? false { self?.currentPage += 1 } // Increment page numbner so we would be ready to get next page results
                 completion(movies, nil)
             }
             else {
@@ -60,12 +64,25 @@ class MoviesProvider {
         }
     }
     
+    func getNextPage(completion: @escaping ([MovieSearchResult]?, Error?) -> Void) {
+        // Prevent making request call if search query does not exist
+        guard let searchQuery = currentQuery else {
+            completion(nil, MoviesProviderError.NoCurrentQuery)
+            return
+        }
+        getMovies(searchQuery: searchQuery) { (movies, error) in
+            completion(movies, error)
+        }
+    }
+    
     func getMovieDetails(movieID: Int, completion: @escaping (MovieDetails?, Error?) -> Void) {
+        // Create URL
         let idString = NSNumber(value: movieID).stringValue
         guard let url = URL(string: MoviesProvider.baseURL)?.appendingPathComponent("movie").appendingPathComponent(idString), var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
             return
         }
         
+        // Assign query
         urlComponents.queryItems = [
             URLQueryItem(name: "api_key", value: MoviesProvider.apiKey)
         ]

@@ -23,9 +23,11 @@ class FavouritesViewController: UIViewController {
     
     // Navigation Support
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Find index path by sender
         guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let movieDetailsVC = segue.destination as? MovieDetailsViewController else {
             return
         }
+        // Assign movieID to MovieDetailsViewController so it could be used to get movie details later
         let selectedMovie = fetchedResultsController.object(at: indexPath)
         movieDetailsVC.movieID = Int(selectedMovie.id)
     }

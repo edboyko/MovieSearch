@@ -29,10 +29,10 @@ class StorageManager {
     }
     
     func save(id: Int, title: String, completion: ((Error?) -> Void)? = nil) {
-        
+        // Create background context
         let context = self.persistentContainer.newBackgroundContext()
         
-        context.performAndWait {
+        context.perform {
             context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
             
             let newFavourite = MovieFavourite(context: context)
@@ -51,6 +51,7 @@ class StorageManager {
     
     
     func deleteFromFavourites(movie: MovieFavourite) {
+        
         mainContext.performAndWait { [weak self] in
             
             self?.mainContext.delete(movie)

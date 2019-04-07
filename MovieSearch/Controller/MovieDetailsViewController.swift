@@ -31,7 +31,7 @@ class MovieDetailsViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        imageProvider.stopImageDownload()
+        imageProvider.stopImageDownload() // Stops download so we do not download the image while we already left Movie Details View Controller
     }
     
     // IBActions
@@ -42,7 +42,7 @@ class MovieDetailsViewController: UITableViewController {
         StorageManager().save(id: movieDetails.id, title: movieDetails.title) { [weak self] (error) in
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
-                let alert = strongSelf.createDefaultAlert(message: error?.localizedDescription ?? "Added to Favourites!")
+                let alert = strongSelf.createDefaultAlert(message: error?.localizedDescription ?? "Added to Favourites!") // Will use error's localized description if error exists, otherwise will notify that favourite has been created
                 self?.navigationController?.present(alert, animated: true)
             }
         }
@@ -55,9 +55,8 @@ class MovieDetailsViewController: UITableViewController {
         }
         
         MoviesProvider().getMovieDetails(movieID: movieID) { [weak self] (movieDetails, error) in
-            guard let strongSelf = self else {
-                return
-            }
+            guard let strongSelf = self else { return }
+            
             strongSelf.movieDetails = movieDetails
             if let movieDetails = strongSelf.movieDetails {
                 DispatchQueue.main.async {
@@ -71,6 +70,7 @@ class MovieDetailsViewController: UITableViewController {
                     
                 }
                 
+                // Once text data has been downloaded successfully we can start image download
                 strongSelf.imageProvider.getImage(for: movieDetails, completion: { (image) in
                     DispatchQueue.main.async {
                         if let image = image {
@@ -78,7 +78,7 @@ class MovieDetailsViewController: UITableViewController {
                             strongSelf.tableView.reloadData()
                         }
                         else {
-                            strongSelf.posterNotAvailableLabel.isHidden = false
+                            strongSelf.posterNotAvailableLabel.isHidden = false // Shows "Poster Not Available" message if was not able to download the image
                         }
                     }
                 })

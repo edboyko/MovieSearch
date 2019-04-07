@@ -24,22 +24,23 @@ class SearchResultsViewController: UIViewController {
     
     // Navigation Support
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Find index path by sender
         guard let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell), let movieDetailsVC = segue.destination as? MovieDetailsViewController else {
             return
         }
-        let selectedMovie = movies[indexPath.row]
-        movieDetailsVC.movieID = selectedMovie.id
+        // Assign movieID to MovieDetailsViewController so it could be used to get movie details later
+        movieDetailsVC.movieID = movies[indexPath.row].id
     }
     
     // ViewController Methods
     func getMore() {
-        guard let moviesProvider = moviesProvider, let currentQuery = moviesProvider.currentQuery else {
+        guard let moviesProvider = moviesProvider else {
             return
         }
+        // Get next page using saved query
         if moviesProvider.hasMorePages {
-            moviesProvider.getMovies(searchQuery: currentQuery) { [weak self] (movies, error) in
+            moviesProvider.getNextPage { [weak self] (movies, error) in
                 DispatchQueue.main.async {
-                    
                     if let movies = movies {
                         self?.movies.append(contentsOf: movies)
                         self?.tableView.reloadData()

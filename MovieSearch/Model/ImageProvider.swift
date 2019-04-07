@@ -16,6 +16,7 @@ class ImageProvider {
     }
     
     func getImage(for movie: MovieDetails, completion: @escaping (UIImage?) -> Void) {
+        // Create URL
         guard let posterPath = movie.posterPath, let url = URL(string: "https://image.tmdb.org/t/p/w342\(posterPath)") else {
             completion(nil)
             return

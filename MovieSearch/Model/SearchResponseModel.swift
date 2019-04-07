@@ -46,7 +46,7 @@ struct MovieDetails: Movie {
     
     let homepage: URL?
     let id: Int
-    let imdbId: String
+    let imdbId: String?
     let originalLanguage: String
     let originalTitle: String
     let overview: String
