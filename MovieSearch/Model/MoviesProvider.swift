@@ -9,22 +9,24 @@
 import Foundation
 
 class MoviesProvider {
+    
+    // Properties
     private static let baseURL = "https://api.themoviedb.org/3"
     private static let apiKey = "<#Insert API Key#>"
-    
     private let networkManager: NetworkManager
     private(set) var hasMorePages = true
     private(set) var currentPage = 1
-    
     private(set) var currentQuery: String?
     
+    // Initialisers
     init(networkManager: NetworkManager = NetworkManager()) {
         self.networkManager = networkManager
     }
-    
+
+    // Methods
     func getMovies(searchQuery: String, completion: @escaping ([MovieSearchResult]?, Error?) -> Void) {
+        currentQuery = searchQuery // Save query for getting next page later
         
-        currentQuery = searchQuery
         guard let url = URL(string: MoviesProvider.baseURL)?.appendingPathComponent("search").appendingPathComponent("movie"), var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else {
             completion(nil, nil)
             return

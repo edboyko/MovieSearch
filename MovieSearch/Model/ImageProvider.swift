@@ -9,10 +9,10 @@
 import UIKit
 
 class ImageProvider {
-    private var networkManager: NetworkManager
+    private let networkManager: NetworkManager
     
-    init() {
-        self.networkManager = NetworkManager(urlSession: URLSession.shared)
+    init(networkManager: NetworkManager = NetworkManager()) {
+        self.networkManager = networkManager
     }
     
     func getImage(for movie: MovieDetails, completion: @escaping (UIImage?) -> Void) {

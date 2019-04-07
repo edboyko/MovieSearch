@@ -16,7 +16,7 @@ struct SearchResponseModel: Decodable {
     let results: [MovieSearchResult]
 }
 
-struct MovieSearchResult: Movie, Decodable {
+struct MovieSearchResult: Movie {
 
     let voteCount: Int
     let id: Int
@@ -33,7 +33,7 @@ struct MovieSearchResult: Movie, Decodable {
     let overview: String
     let releaseDate: String
 }
-struct MovieDetails: Movie, Decodable {
+struct MovieDetails: Movie {
     
     struct Genre: Decodable {
         let name: String
@@ -62,7 +62,7 @@ struct MovieDetails: Movie, Decodable {
     let voteCount: Int
     let releaseDate: String
 }
-protocol Movie {
+protocol Movie: Decodable {
     
     var voteCount: Int { get }
     var id: Int { get }

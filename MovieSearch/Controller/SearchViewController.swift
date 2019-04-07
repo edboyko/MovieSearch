@@ -13,10 +13,49 @@ class SearchViewController: UIViewController {
     // IBOutlets
     @IBOutlet private var searchField: UITextField!
     @IBOutlet private var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var textFieldCetreConstraint: NSLayoutConstraint!
+    @IBOutlet private var fieldRightConstraint: NSLayoutConstraint!
+    @IBOutlet private var fieldLeftConstraint: NSLayoutConstraint!
+    
+    // Properties
+    private var basicFieldSideConstraintsValue: CGFloat = 8
+    
+    // View Controller Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        basicFieldSideConstraintsValue = fieldRightConstraint.constant
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
-    // IBActions
-    @IBAction func searchAction(_ sender: Any) {
-        search(from: searchField)
+    }
+
+    // UIResponder
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
+    // Keyboard
+    @objc func keyboardWillShow(notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let offset = view.frame.size.height/2 - keyboardSize.size.height
+            
+            self.textFieldCetreConstraint.constant = offset - self.searchField.frame.size.height/2
+            fieldLeftConstraint.constant = 0
+            fieldRightConstraint.constant = 0
+            
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.view.layoutIfNeeded()
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        textFieldCetreConstraint.constant = 0
+        fieldLeftConstraint.constant = basicFieldSideConstraintsValue
+        fieldRightConstraint.constant = basicFieldSideConstraintsValue
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.view.layoutIfNeeded()
+        }
     }
     
     // View Controller Methods
@@ -57,6 +96,12 @@ class SearchViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
 }
 extension SearchViewController: UITextFieldDelegate {
     

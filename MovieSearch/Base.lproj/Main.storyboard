@@ -18,46 +18,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type movie name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eV-XX-Nj5">
-                                <rect key="frame" x="16" y="52" width="326" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="yH3-s5-68d"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jSk-Ni-lzC">
-                                <rect key="frame" x="350" y="52" width="48" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8W-uu-Qyb">
+                                <rect key="frame" x="8" y="427" width="398" height="42"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xMf-bB-L4y">
+                                        <rect key="frame" x="370" y="11" width="20" height="20"/>
+                                        <color key="color" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Type movie name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0eV-XX-Nj5">
+                                        <rect key="frame" x="8" y="0.0" width="382" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="czJ-3m-51I"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="yH3-s5-68d"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="rTA-yr-3pD"/>
+                                    <constraint firstItem="0eV-XX-Nj5" firstAttribute="top" secondItem="b8W-uu-Qyb" secondAttribute="top" id="Hpp-wL-aeb"/>
+                                    <constraint firstAttribute="trailing" secondItem="0eV-XX-Nj5" secondAttribute="trailing" constant="8" id="Hvu-1w-Z8b"/>
+                                    <constraint firstItem="0eV-XX-Nj5" firstAttribute="leading" secondItem="b8W-uu-Qyb" secondAttribute="leading" constant="8" id="KMM-YZ-gn1"/>
+                                    <constraint firstAttribute="trailing" secondItem="xMf-bB-L4y" secondAttribute="trailing" constant="8" id="qlM-B5-meV"/>
+                                    <constraint firstAttribute="bottom" secondItem="0eV-XX-Nj5" secondAttribute="bottom" id="uJ2-jY-dzo"/>
+                                    <constraint firstItem="xMf-bB-L4y" firstAttribute="centerY" secondItem="0eV-XX-Nj5" secondAttribute="centerY" id="wmy-tQ-elu"/>
                                 </constraints>
-                                <state key="normal" title="Search"/>
-                                <connections>
-                                    <action selector="searchAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UXW-j3-w74"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xMf-bB-L4y">
-                                <rect key="frame" x="197" y="90" width="20" height="20"/>
-                                <color key="color" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jSk-Ni-lzC" firstAttribute="leading" secondItem="0eV-XX-Nj5" secondAttribute="trailing" constant="8" id="KmO-4K-Z9D"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jSk-Ni-lzC" secondAttribute="trailing" constant="16" id="YGa-0F-Hcy"/>
-                            <constraint firstItem="xMf-bB-L4y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fHl-pM-O6k"/>
-                            <constraint firstItem="jSk-Ni-lzC" firstAttribute="centerY" secondItem="0eV-XX-Nj5" secondAttribute="centerY" id="hvp-jI-4mC"/>
-                            <constraint firstItem="0eV-XX-Nj5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="pjl-5G-gV1"/>
-                            <constraint firstItem="0eV-XX-Nj5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="w2h-Ph-Y9g"/>
-                            <constraint firstItem="xMf-bB-L4y" firstAttribute="top" secondItem="0eV-XX-Nj5" secondAttribute="bottom" constant="8" id="zur-AM-iFT"/>
+                            <constraint firstItem="b8W-uu-Qyb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="A0X-sK-Ocf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b8W-uu-Qyb" secondAttribute="trailing" constant="8" id="Mtp-ZF-pIE"/>
+                            <constraint firstItem="b8W-uu-Qyb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="wS2-za-GCz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="1Xz-ys-2OE"/>
                     <connections>
                         <outlet property="activityIndicator" destination="xMf-bB-L4y" id="9Mr-hy-6jp"/>
+                        <outlet property="fieldLeftConstraint" destination="wS2-za-GCz" id="HI3-aw-fjA"/>
+                        <outlet property="fieldRightConstraint" destination="Mtp-ZF-pIE" id="yAq-0G-6jU"/>
                         <outlet property="searchField" destination="0eV-XX-Nj5" id="0Hy-Df-OvN"/>
+                        <outlet property="textFieldCetreConstraint" destination="A0X-sK-Ocf" id="0mY-G8-WiJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -10,11 +10,14 @@ import UIKit
 
 class SearchResultsViewController: UIViewController {
 
+    // Properties
     var moviesProvider: MoviesProvider?
     var movies = [MovieSearchResult]()
     
+    // IBOutlets
     @IBOutlet private var tableView: UITableView!
     
+    // IBActions
     @IBAction func closeAction(_ sender: Any) {
         self.navigationController?.dismiss(animated: true)
     }
@@ -28,6 +31,7 @@ class SearchResultsViewController: UIViewController {
         movieDetailsVC.movieID = selectedMovie.id
     }
     
+    // ViewController Methods
     func getMore() {
         guard let moviesProvider = moviesProvider, let currentQuery = moviesProvider.currentQuery else {
             return
@@ -46,6 +50,7 @@ class SearchResultsViewController: UIViewController {
     }
 }
 extension SearchResultsViewController: UITableViewDataSource, UITableViewDelegate {
+    // UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movies.count
     }
@@ -67,6 +72,7 @@ extension SearchResultsViewController: UITableViewDataSource, UITableViewDelegat
         }
     }
     
+    //UITableViewDelegate
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         getMore()
     }

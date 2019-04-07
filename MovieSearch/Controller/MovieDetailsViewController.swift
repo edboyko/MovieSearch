@@ -9,20 +9,47 @@
 import UIKit
 
 class MovieDetailsViewController: UITableViewController {
+    
+    // IBOutlets
     @IBOutlet private var titleCell: UITableViewCell!
     @IBOutlet private var overviewCell: DescriptionCell!
     @IBOutlet private var posterImageView: UIImageView!
-    @IBOutlet var genresCell: UITableViewCell!
-    @IBOutlet var posterNotAvailableLabel: UILabel!
-    @IBOutlet var yearAndRatingCell: UITableViewCell!
+    @IBOutlet private var genresCell: UITableViewCell!
+    @IBOutlet private var posterNotAvailableLabel: UILabel!
+    @IBOutlet private var yearAndRatingCell: UITableViewCell!
     
+    // Properties
     var movieDetails: MovieDetails?
     var movieID: Int?
-    
     let imageProvider = ImageProvider()
     
+    // ViewController lifecycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getDetails()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        imageProvider.stopImageDownload()
+    }
+    
+    // IBActions
+    @IBAction func addToFavouritesAction(_ sender: Any) {
+        guard let movieDetails = movieDetails else {
+            return
+        }
+        StorageManager().save(id: movieDetails.id, title: movieDetails.title) { [weak self] (error) in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else { return }
+                let alert = strongSelf.createDefaultAlert(message: error?.localizedDescription ?? "Added to Favourites!")
+                self?.navigationController?.present(alert, animated: true)
+            }
+        }
+    }
+    
+    // ViewController methods
+    func getDetails() {
         guard let movieID = movieID else {
             return
         }
@@ -59,24 +86,6 @@ class MovieDetailsViewController: UITableViewController {
             else {
                 let alert = strongSelf.createDefaultAlert(message: error?.localizedDescription ?? "Error Occurred")
                 strongSelf.navigationController?.present(alert, animated: true)
-            }
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        imageProvider.stopImageDownload()
-    }
-    
-    @IBAction func addToFavouritesAction(_ sender: Any) {
-        guard let movieDetails = movieDetails else {
-            return
-        }
-        StorageManager().save(id: movieDetails.id, title: movieDetails.title) { [weak self] (error) in
-            DispatchQueue.main.async {
-                guard let strongSelf = self else { return }
-                let alert = strongSelf.createDefaultAlert(message: error?.localizedDescription ?? "Added to Favourites!")
-                self?.navigationController?.present(alert, animated: true)
             }
         }
     }
